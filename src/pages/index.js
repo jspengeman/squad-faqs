@@ -1,6 +1,5 @@
 import React from 'react'
 import styled, { createGlobalStyle } from "styled-components"
-import { Link } from 'gatsby'
 import FAQ from '../components/FAQ'
 import Header from '../components/Header'
 import SEO from '../components/seo'
@@ -60,8 +59,7 @@ const IndexPage = () => (
     <Container>
       <SEO title="Squad FAQs" keywords={[`squad`, `squad-faqs`]} />
       <Header />
-      {faqs.map(faq => <FAQ faq={faq} />)}
-      <Link to="/blah/">Go to blah</Link>
+      {faqs.map(faq => <FAQ key={faq.id} faq={faq} />)}
     </Container>
   </div>
 )

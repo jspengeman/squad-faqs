@@ -14,7 +14,7 @@ const FAQ = ({ faq }) => {
   return (
     <Section>
       <Question question={faq.question} />
-      {faq.answers.map(answer => <Answer answer={answer} />)}
+      {faq.answers.map(answer => <Answer key={answer} answer={answer} />)}
     </Section>
   )
 }

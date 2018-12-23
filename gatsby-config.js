@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Squad FAQs`,
-    description: `Community currated frequently asked questions .`,
+    description: `Community currated frequently asked questions.`,
     author: `@jspengeman`,
   },
   plugins: [
@@ -25,15 +25,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Squad FAQs`,
+        short_name: `FAQs`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#000000`,
+        theme_color: `#FFC40B`,
         display: `minimal-ui`,
-        // icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon-short.png`, 
       },
     },
+    `gatsby-plugin-netlify`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
