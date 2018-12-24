@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
 export const Container = styled.section`
   margin-right: auto;
   margin-left: auto;
-  padding: 10px;
+  padding: 15px;
 
   @media (min-width: 768px) {
     width: 720px;

@@ -2,12 +2,23 @@ import React from "react"
 import Image from "./Image"
 import styled from "styled-components"
 
-// TODO: This size will need to be dynamic based on screen size.
-// Maybe that should be done with the graphql query?
+// TODO: These media queries could probably be adjusted a bit.
 const Section = styled.section`
-  height: 200px;
-  width: 300px;
+  height: 80px;
+  width: 80%;
   margin: 0 auto;
+  margin-top: 10px;
+
+
+  @media (min-width: 456px) {
+    height: 130px;
+  }
+  @media (min-width: 564px) {
+    height: 140px;
+  }
+  @media (min-width: 768px) {
+    height: 150px;
+  }
 `
 
 const Header = () => {
