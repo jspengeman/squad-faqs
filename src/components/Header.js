@@ -9,7 +9,6 @@ const Section = styled.section`
   margin: 0 auto;
   margin-top: 10px;
 
-
   @media (min-width: 456px) {
     height: 130px;
   }
@@ -24,7 +23,9 @@ const Section = styled.section`
 const Header = () => {
   return (
     <Section>
-      <Image />
+      <a href="http://joinsquad.com/"> 
+        <Image />
+      </a>
     </Section>
   )
 }

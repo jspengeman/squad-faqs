@@ -27,6 +27,10 @@ export const Container = styled.section`
   }
 `
 
+// TODO: Need to determine how ordering of FAQs will be done.
+// TODO: Need to determine if categories for FAQs will be needed.
+// TODO: Need to support offline mode. 
+
 const graphAdapater = ({ allContentfulFaq }) => 
   allContentfulFaq.edges.map(faq => faq.node)
 
