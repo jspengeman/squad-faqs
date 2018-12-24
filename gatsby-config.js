@@ -1,3 +1,19 @@
+// console.log(process.env.GATSBY__CONTENTFUL_SPACE_ID)
+// console.log(process.env)
+
+const dotenv = require('dotenv')
+
+const config = Object.assign(
+  {}, 
+  process.env, 
+  dotenv.config({
+    path: `.env.${process.env.NODE_ENV}`
+  }).parsed
+)
+
+console.log("=== Building with ===")
+console.log(config)
+
 module.exports = {
   siteMetadata: {
     title: `Squad FAQs`,
@@ -18,6 +34,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
       },
     },
     `gatsby-transformer-sharp`,

@@ -15,7 +15,8 @@ const Image = () => (
         }
       }
     `}
-    render={data => <Img maxWidth={300} fluid={data.placeholderImage.childImageSharp.fluid} />}
+    render={data => <Img fluid={data.placeholderImage.childImageSharp.fluid} />}
   />
 )
+
 export default Image
