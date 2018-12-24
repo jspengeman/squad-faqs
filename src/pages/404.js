@@ -1,14 +1,34 @@
 import React from 'react'
+import styled from "styled-components"
 import { Link } from 'gatsby'
 import SEO from '../components/seo'
+import Layout from '../components/Layout'
+import Header from '../components/Header'
+import { PRIMARY_COLOR, SECONDARY_COLOR } from '../utils/theme'
+
+
+const Container = styled.div`
+  text-align: center;  
+`
+
+const Message = styled.h1`
+  color: ${SECONDARY_COLOR};
+`
+
+const FancyLink = styled(Link)`
+  color: ${PRIMARY_COLOR};
+`
 
 // TODO: Should get rid of this and look into creating a global redirect.
 const NotFoundPage = () => (
-  <div>
+  <Layout>
     <SEO title="404: Not found" />
-    <h1> Page not found. </h1>
-    <Link to="/"> Back to safety </Link>
-  </div>
+    <Header />
+    <Container>
+      <Message> 404 - Battle Buddy Not Found </Message>
+      <FancyLink to="/"> Back to safety </FancyLink>
+    </Container>
+  </Layout>
 )
 
 export default NotFoundPage
