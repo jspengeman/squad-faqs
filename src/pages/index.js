@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from "gatsby"
 import styled, { createGlobalStyle } from "styled-components"
 import FAQ from '../components/FAQ'
 import Header from '../components/Header'
@@ -26,42 +27,43 @@ export const Container = styled.section`
   }
 `
 
-const faqs = [
-  {
-    id: 1,
-    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor ac nisl non feugiat. Nullam sem neque, pretium id bibendum quis, rhoncus ut elit?", 
-    answers: ["Proin bibendum sit amet diam eget placerat. Vivamus libero ipsum, venenatis eu egestas vitae, suscipit in nunc. Nunc mattis id ipsum mollis facilisis. Morbi ut mauris ut dolor faucibus laoreet at ac dolor. Quisque mattis tincidunt mauris, nec hendrerit urna ullamcorper ac. Suspendisse nec velit eu risus porta posuere vitae eget massa."]
-  },
-  {
-    id: 2,
-    question: "Nunc iaculis mattis congue. Donec vel nibh sodales, malesuada lacus nec, tincidunt ex. Integer interdum pretium dolor, venenatis lacinia purus ullamcorper nec?", 
-    answers: [
-      "Option 1: Maecenas rutrum, justo at maximus placerat, lorem magna vestibulum odio, sed pellentesque tellus neque vel augue. Etiam consequat tortor et porta ultrices.", 
-      "Option 2: Fusce bibendum nunc vitae tortor interdum pretium. Quisque bibendum est eu gravida malesuada.", 
-      "Option 3: Sed at massa ultricies, rhoncus elit quis, tempor felis. Ut tincidunt, ex ac egestas consectetur, ligula nisl luctus dui, vel ullamcorper purus mi sed elit. Donec tincidunt, velit a mollis pharetra, mi lectus accumsan leo, at porta odio velit eget velit. Nullam interdum nisi id dolor suscipit, sed posuere justo vehicula."
-    ]
-  },
-  {
-    id: 3,
-    question: "Donec pharetra mauris a purus tristique dictum. Nam egestas blandit scelerisque?", 
-    answers: ["Proin bibendum sit amet diam eget placerat. Vivamus libero ipsum, venenatis eu egestas vitae, suscipit in nunc. Nunc mattis id ipsum mollis facilisis. Morbi ut mauris ut dolor faucibus laoreet at ac dolor. Quisque mattis tincidunt mauris."]
-  },
-  {
-    id: 4,
-    question: "Suspendisse tristique pretium nisl, in malesuada lorem rhoncus a. Pellentesque interdum cursus quam, vitae finibus metus. Donec tincidunt ipsum lorem, sed pulvinar?", 
-    answers: ["Sed at massa ultricies, rhoncus elit quis, tempor felis. Ut tincidunt, ex ac egestas consectetur, ligula nisl luctus dui, vel ullamcorper purus mi sed elit. Donec tincidunt, velit a mollis pharetra, mi lectus accumsan leo, at porta odio velit eget velit. Nullam interdum nisi id dolor suscipit, sed posuere justo vehicula."]
-  }
-]
+const graphAdapater = ({ allContentfulFaq }) => 
+  allContentfulFaq.edges.map(faq => faq.node)
 
-const IndexPage = () => (
-  <div>
-    <GlobalStyle />
-    <Container>
-      <SEO title="Squad FAQs" keywords={[`squad`, `squad-faqs`]} />
-      <Header />
-      {faqs.map(faq => <FAQ key={faq.id} faq={faq} />)}
-    </Container>
-  </div>
-)
+const IndexPage = ({ data }) => {
+  const faqs = graphAdapater(data)
+  return (
+    <div>
+      <GlobalStyle />
+      <Container>
+        <SEO title="Squad FAQs" keywords={[`squad`, `squad-faqs`]} />
+        <Header />
+        {faqs.map(faq => <FAQ key={faq.id} faq={faq} />)}
+      </Container>
+    </div>
+  )
+}
+
+export const query = graphql`
+  query AllFAQsQuery {    
+    allContentfulFaq {
+      edges {
+        node {
+          id
+          question {
+            id
+            question
+          }
+          answer {
+            id
+            childMarkdownRemark {
+              html
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage

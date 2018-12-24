@@ -1,6 +1,3 @@
-// console.log(process.env.GATSBY__CONTENTFUL_SPACE_ID)
-// console.log(process.env)
-
 const config = Object.assign(
   {},
   process.env,
@@ -38,6 +35,7 @@ module.exports = {
         accessToken: config.CONTENTFUL_DELIVERY_TOKEN,
       },
     },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

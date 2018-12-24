@@ -6,17 +6,19 @@ const Section = styled.section`
   text-justify: inter-word;
 `
 
-const Question = ({ question }) => <h2> { question } </h2>
+const Question = ({ question }) => (
+  <h2> { question.question } </h2>
+)
 
-const Answer = ({ answer }) => <p> { answer } </p>
+const Answer = ({ answer }) => (
+  <div dangerouslySetInnerHTML={{__html:answer.childMarkdownRemark.html}} />
+) 
 
-const FAQ = ({ faq }) => {
-  return (
-    <Section>
-      <Question question={faq.question} />
-      {faq.answers.map(answer => <Answer key={answer} answer={answer} />)}
-    </Section>
-  )
-}
+const FAQ = ({ faq: {question, answer} }) => (
+  <Section>
+    <Question question={question} />
+    <Answer answer={answer} />
+  </Section>
+)
 
 export default FAQ
