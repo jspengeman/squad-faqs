@@ -1,18 +1,13 @@
 // console.log(process.env.GATSBY__CONTENTFUL_SPACE_ID)
 // console.log(process.env)
 
-const dotenv = require('dotenv')
-
 const config = Object.assign(
-  {}, 
-  process.env, 
-  dotenv.config({
+  {},
+  process.env,
+  require('dotenv').config({
     path: `.env.${process.env.NODE_ENV}`
   }).parsed
 )
-
-console.log("=== Building with ===")
-console.log(config)
 
 module.exports = {
   siteMetadata: {
@@ -39,8 +34,8 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
+        spaceId: config.CONTENTFUL_SPACE_ID,
+        accessToken: config.CONTENTFUL_DELIVERY_TOKEN,
       },
     },
     `gatsby-transformer-sharp`,
