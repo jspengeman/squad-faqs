@@ -6,9 +6,9 @@ import Layout from '../components/Layout'
 import SEO from '../components/seo'
 
 // TODO: Need to determine how ordering of FAQs will be done.
-// TODO: Need to determine if categories for FAQs will be needed.
 // TODO: Need to support autolinking headers.
 // TODO: Need to support offline mode. 
+// TODO: Need to determine if categories for FAQs will be needed.
 
 const graphAdapater = ({ allContentfulFaq }) => 
   allContentfulFaq.edges.map(faq => faq.node)

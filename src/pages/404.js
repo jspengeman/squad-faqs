@@ -19,7 +19,6 @@ const FancyLink = styled(Link)`
   color: ${PRIMARY_COLOR};
 `
 
-// TODO: Should get rid of this and look into creating a global redirect.
 const NotFoundPage = () => (
   <Layout>
     <SEO title="404: Not found" />
