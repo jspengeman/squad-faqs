@@ -2,7 +2,7 @@ const config = Object.assign(
   {},
   process.env,
   require('dotenv').config({
-    path: `.env.${process.env.NODE_ENV}`
+    path: `.env.${process.env.NODE_ENV}`,
   }).parsed
 )
 
@@ -19,7 +19,7 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
-      }
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -47,7 +47,7 @@ module.exports = {
         background_color: `#000000`,
         theme_color: `#FFC40B`,
         display: `minimal-ui`,
-        icon: `src/images/icon-short.png`, 
+        icon: `src/images/icon-short.png`,
       },
     },
     `gatsby-plugin-netlify`,

@@ -1,6 +1,6 @@
-import React from "react"
-import Image from "./Image"
-import styled from "styled-components"
+import React from 'react'
+import Image from './Image'
+import styled from 'styled-components'
 
 // TODO: These media queries could probably be adjusted a bit.
 const Section = styled.section`
@@ -23,7 +23,7 @@ const Section = styled.section`
 const Header = () => {
   return (
     <Section>
-      <a href="http://joinsquad.com/"> 
+      <a href="http://joinsquad.com/">
         <Image />
       </a>
     </Section>

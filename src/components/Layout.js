@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { createGlobalStyle } from "styled-components"
+import styled, { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -15,7 +15,7 @@ export const Container = styled.section`
   @media (min-width: 768px) {
     width: 720px;
   }
-  @media (min-width:  992px) {
+  @media (min-width: 992px) {
     width: 720px;
   }
   @media (min-width: 1200px) {
@@ -24,12 +24,10 @@ export const Container = styled.section`
 `
 
 export const Layout = ({ children }) => (
-    <div>
-      <GlobalStyle />
-      <Container>
-        {children}
-      </Container>
-    </div>
+  <div>
+    <GlobalStyle />
+    <Container>{children}</Container>
+  </div>
 )
 
 export default Layout
