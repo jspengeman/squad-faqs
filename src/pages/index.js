@@ -6,7 +6,7 @@ import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import { Either } from '../utils/functions'
 
-// TODO: Need to support autolinking headers.
+// TODO: Should add discord and github social links.
 // TODO: Need to support offline mode.
 
 const graphAdapater = ({ allContentfulCategory }) => {

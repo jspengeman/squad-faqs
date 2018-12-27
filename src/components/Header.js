@@ -2,7 +2,6 @@ import React from 'react'
 import Image from './Image'
 import styled from 'styled-components'
 
-// TODO: These media queries could probably be adjusted a bit.
 const Section = styled.section`
   height: 80px;
   width: 80%;
