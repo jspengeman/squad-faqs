@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import FAQ from '../components/FAQ'
 import Header from '../components/Header'
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import SEO from '../components/seo'
 import { Either } from '../utils/functions'
 
 // TODO: Should add discord and github social links.
