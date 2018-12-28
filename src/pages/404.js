@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import SEO from '../components/seo'
+import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../utils/theme'

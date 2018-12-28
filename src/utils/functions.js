@@ -22,3 +22,7 @@ export const Either = {
       Either.fromNullable(obj)
     ),
 }
+
+export const identity = x => x
+
+export const value = x => x => x

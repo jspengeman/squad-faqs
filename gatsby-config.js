@@ -10,7 +10,8 @@ module.exports = {
   siteMetadata: {
     title: `Squad FAQs`,
     description: `Community currated frequently asked questions.`,
-    author: `@jspengeman`,
+    srcUrl: 'https://github.com/jspengeman/squad-faqs',
+    chatUrl: 'https://discordapp.com/invite/aN2MtGH',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
