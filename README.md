@@ -1,5 +1,7 @@
 ## Squad FAQs
 
+Squad FAQs is a static site generated with GatsbyJS that uses Contentful's content management system with webhooks to trigger builds on Netlify which will result in the site being regenerated with the new content.
+
 ### Development
 
 A `.env` file is required that defines the following variables:
