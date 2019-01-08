@@ -1,13 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import FAQ from '../components/FAQ'
+import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import { Either } from '../utils/functions'
-
-// TODO: Should add discord and github social links.
-// TODO: Need to support offline mode.
 
 const graphAdapater = ({ allContentfulCategory }) => {
   return Either.fromPath(['edges', 0, 'node', 'faqs'])(
@@ -24,6 +22,7 @@ const IndexPage = ({ data }) => {
       {faqs.map(faq => (
         <FAQ key={faq.id} faq={faq} />
       ))}
+      <Footer />
     </Layout>
   )
 }
