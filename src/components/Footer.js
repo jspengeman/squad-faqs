@@ -5,12 +5,12 @@ import discord from '../images/discord.svg'
 import github from '../images/github.svg'
 import { Either, identity, value } from '../utils/functions'
 
-const SocialLinks = styled.div`
+const Container = styled.div`
   margin-top: 50px;
   text-align: center;
 `
 
-const Icon = styled.img`
+const Image = styled.img`
   display: inline-block;
   width: 150px;
   margin-left: 15px;
@@ -30,14 +30,14 @@ const Social = () => (
       }
     `}
     render={data => (
-      <SocialLinks>
+      <>
         <a
           href={Either.fromPath(['site', 'siteMetadata', 'srcUrl'])(data).fold(
             value(''),
             identity
           )}
         >
-          <Icon src={github} alt="github" />
+          <Image src={github} alt="github" />
         </a>
         <a
           href={Either.fromPath(['site', 'siteMetadata', 'chatUrl'])(data).fold(
@@ -45,13 +45,23 @@ const Social = () => (
             identity
           )}
         >
-          <Icon src={discord} alt="discord" />
+          <Image src={discord} alt="discord" />
         </a>
-      </SocialLinks>
+      </>
     )}
   />
 )
 
-const Footer = () => <Social />
+const Disclaimer = styled.p`
+  font-size: 12px;
+  color: #606060;
+`
+
+const Footer = () => (
+  <Container>
+    <Social />
+    <Disclaimer> Squad FAQs is an unoffical community ran website. </Disclaimer>
+  </Container>
+)
 
 export default Footer

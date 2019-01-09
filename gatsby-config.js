@@ -9,7 +9,7 @@ const config = Object.assign(
 module.exports = {
   siteMetadata: {
     title: `Squad FAQs`,
-    description: `Community currated frequently asked questions.`,
+    description: `Community currated frequently asked questions`,
     srcUrl: 'https://github.com/jspengeman/squad-faqs',
     chatUrl: 'https://discordapp.com/invite/aN2MtGH',
   },
