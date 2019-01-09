@@ -17,12 +17,18 @@ const Image = styled.img`
   margin-right: 15px;
 `
 
-const Social = () => (
+const Disclaimer = styled.p`
+  font-size: 12px;
+  color: #606060;
+`
+
+const Footer = () => (
   <StaticQuery
     query={graphql`
       query socialUrls {
         site {
           siteMetadata {
+            disclaimer
             srcUrl
             chatUrl
           }
@@ -30,7 +36,7 @@ const Social = () => (
       }
     `}
     render={data => (
-      <>
+      <Container>
         <a
           href={Either.fromPath(['site', 'siteMetadata', 'srcUrl'])(data).fold(
             value(''),
@@ -47,21 +53,15 @@ const Social = () => (
         >
           <Image src={discord} alt="discord" />
         </a>
-      </>
+        <Disclaimer>
+          {Either.fromPath(['site', 'siteMetadata', 'disclaimer'])(data).fold(
+            value(''),
+            identity
+          )}
+        </Disclaimer>
+      </Container>
     )}
   />
-)
-
-const Disclaimer = styled.p`
-  font-size: 12px;
-  color: #606060;
-`
-
-const Footer = () => (
-  <Container>
-    <Social />
-    <Disclaimer> Squad FAQs is an unoffical community ran website. </Disclaimer>
-  </Container>
 )
 
 export default Footer

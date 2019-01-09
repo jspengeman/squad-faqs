@@ -10,6 +10,7 @@ module.exports = {
   siteMetadata: {
     title: `Squad FAQs`,
     description: `Community currated frequently asked questions`,
+    disclaimer: `Squad FAQs is an unoffical community ran website.`,
     srcUrl: 'https://github.com/jspengeman/squad-faqs',
     chatUrl: 'https://discordapp.com/invite/aN2MtGH',
   },
