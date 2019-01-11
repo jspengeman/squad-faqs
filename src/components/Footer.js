@@ -1,9 +1,7 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import discord from '../images/discord.svg'
 import github from '../images/github.svg'
-import { Either, identity, value } from '../utils/functions'
 
 const Container = styled.div`
   margin-top: 50px;
@@ -22,46 +20,16 @@ const Disclaimer = styled.p`
   color: #606060;
 `
 
-const Footer = () => (
-  <StaticQuery
-    query={graphql`
-      query socialUrls {
-        site {
-          siteMetadata {
-            disclaimer
-            srcUrl
-            chatUrl
-          }
-        }
-      }
-    `}
-    render={data => (
-      <Container>
-        <a
-          href={Either.fromPath(['site', 'siteMetadata', 'srcUrl'])(data).fold(
-            value(''),
-            identity
-          )}
-        >
-          <Image src={github} alt="github" />
-        </a>
-        <a
-          href={Either.fromPath(['site', 'siteMetadata', 'chatUrl'])(data).fold(
-            value(''),
-            identity
-          )}
-        >
-          <Image src={discord} alt="discord" />
-        </a>
-        <Disclaimer>
-          {Either.fromPath(['site', 'siteMetadata', 'disclaimer'])(data).fold(
-            value(''),
-            identity
-          )}
-        </Disclaimer>
-      </Container>
-    )}
-  />
+const Footer = ({ disclaimer, sourceUrl, chatUrl }) => (
+  <Container>
+    <a href={sourceUrl}>
+      <Image src={github} alt="github" />
+    </a>
+    <a href={chatUrl}>
+      <Image src={discord} alt="discord" />
+    </a>
+    <Disclaimer>{disclaimer}</Disclaimer>
+  </Container>
 )
 
 export default Footer

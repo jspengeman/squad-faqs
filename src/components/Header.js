@@ -1,7 +1,5 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import { Either, identity, value } from '../utils/functions'
 import Logo from './Logo'
 
 const Container = styled.section`
@@ -16,36 +14,14 @@ const Title = styled.h4`
   margin-top: 5px;
 `
 
-const FancyTitle = () => (
-  <StaticQuery
-    query={graphql`
-      query siteTitle {
-        site {
-          siteMetadata {
-            description
-          }
-        }
-      }
-    `}
-    render={data => (
-      <Title>
-        {Either.fromPath(['site', 'siteMetadata', 'description'])(data).fold(
-          value(''),
-          identity
-        )}
-      </Title>
-    )}
-  />
-)
-
-const Header = () => {
+const Header = ({ subtitle }) => {
   return (
     <div>
       <Container>
         <a href="http://joinsquad.com/">
           <Logo />
         </a>
-        <FancyTitle>Community currated frequently asked questions.</FancyTitle>
+        <Title>{subtitle}</Title>
       </Container>
     </div>
   )

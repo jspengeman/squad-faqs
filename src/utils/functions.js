@@ -12,7 +12,7 @@ const Left = x => ({
   inspect: () => `Left(${x})`,
 })
 
-export const Either = {
+const Either = {
   Left,
   Right,
   fromNullable: x => (x === null || x === undefined ? Left(x) : Right(x)),
@@ -23,6 +23,12 @@ export const Either = {
     ),
 }
 
-export const identity = x => x
+const identity = x => x
 
-export const value = x => x => x
+const value = x => x => x
+
+module.exports = {
+  Either,
+  identity,
+  value,
+}
