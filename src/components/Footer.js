@@ -17,7 +17,7 @@ const Image = styled.img`
 
 const Disclaimer = styled.p`
   font-size: 12px;
-  color: #606060;
+  color: #a9a9a9;
 `
 
 const Footer = ({ disclaimer, sourceUrl, chatUrl }) => (

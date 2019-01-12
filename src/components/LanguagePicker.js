@@ -27,14 +27,18 @@ const Select = styled.select`
 const LanguagePicker = ({ locales, currentLocale, onChange }) => {
   return (
     <Container>
-      <Select onChange={onChange} value={currentLocale}>
+      <Select
+        onChange={onChange}
+        value={currentLocale}
+        aria-label="language selection"
+      >
         {locales.map(locale => (
           <option value={locale.value} key={locale.value}>
             {locale.displayName}
           </option>
         ))}
       </Select>
-      <Image src={language} alt="language-selection" />
+      <Image src={language} alt="language selection image" />
     </Container>
   )
 }
