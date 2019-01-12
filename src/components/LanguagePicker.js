@@ -5,24 +5,23 @@ import language from '../images/language.svg'
 
 const Container = styled.div`
   text-align: right;
-  margin-right: 5px;
-  margin-top: 5px;
+  margin-right: 10px;
+  margin-top: 10px;
 `
 
 const Image = styled.img`
   display: inline-block;
-  width: 24px;
-  margin-bottom: 0px;
-  margin-right: 10px;
+  height: 32px;
+  margin-bottom: -10px;
 `
 
 const Select = styled.select`
   cursor: pointer;
   margin-right: 10px;
-  border: 0px;
   background: transparent;
-  color: white;
-  border: 1px solid white;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  min-width: 90px;
 `
 
 const LanguagePicker = ({ locales, currentLocale, onChange }) => {
