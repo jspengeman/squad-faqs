@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import discord from '../images/discord.svg'
 import github from '../images/github.svg'
 
-const Container = styled.div`
+const Container = styled.section`
   margin-top: 50px;
   text-align: center;
 `

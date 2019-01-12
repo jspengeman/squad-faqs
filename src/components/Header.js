@@ -5,7 +5,6 @@ import Logo from './Logo'
 const Container = styled.section`
   width: 80%;
   margin: 0 auto;
-  margin-top: 10px;
   margin-bottom: 50px;
 `
 
@@ -16,14 +15,12 @@ const Title = styled.h4`
 
 const Header = ({ subtitle }) => {
   return (
-    <div>
-      <Container>
-        <a href="http://joinsquad.com/">
-          <Logo />
-        </a>
-        <Title>{subtitle}</Title>
-      </Container>
-    </div>
+    <Container>
+      <a href="http://joinsquad.com/">
+        <Logo />
+      </a>
+      <Title>{subtitle}</Title>
+    </Container>
   )
 }
 
