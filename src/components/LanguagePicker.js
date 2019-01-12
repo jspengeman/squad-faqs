@@ -42,10 +42,12 @@ class StatefulLanguagePicker extends React.Component {
   // I wish hooks would work :(
   constructor(props) {
     super(props)
-    this.state = {
-      selection: window.location.pathname.replace('/', ''),
-    }
+    this.state = { selection: '' }
     this.onChange = this.onChange.bind(this)
+  }
+
+  componentDidMount() {
+    this.setState({ selection: window.location.pathname.replace('/', '') })
   }
 
   onChange(event) {
