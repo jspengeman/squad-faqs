@@ -11,6 +11,7 @@ module.exports = {
     title: `Squad FAQs`,
     description: `Community curated frequently asked questions`,
     disclaimer: `Squad FAQs is an unofficial community ran website.`,
+    siteUrl: `https://www.squad-faqs.org/`,
     srcUrl: 'https://github.com/jspengeman/squad-faqs',
     chatUrl: 'https://discordapp.com/invite/aN2MtGH',
   },
@@ -54,5 +55,6 @@ module.exports = {
     },
     `gatsby-plugin-netlify`,
     'gatsby-plugin-offline',
+    `gatsby-plugin-sitemap`,
   ],
 }
