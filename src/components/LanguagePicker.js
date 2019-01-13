@@ -51,7 +51,7 @@ class StatefulLanguagePicker extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ selection: window.location.pathname.replace('/', '') })
+    this.setState({ selection: window.location.pathname.replace(/\//g, '') })
   }
 
   onChange(event) {
