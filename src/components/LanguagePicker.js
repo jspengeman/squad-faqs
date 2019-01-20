@@ -1,71 +1,110 @@
 import React from 'react'
 import styled from 'styled-components'
+import { transparentize, darken } from 'polished'
 import { navigate } from 'gatsby'
-import language from '../images/language.svg'
+import { PRIMARY_COLOR } from '../utils/theme'
 
 const Container = styled.div`
-  text-align: right;
-  margin-right: 10px;
-  margin-top: 10px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+
+  @media (max-width: 950px) {
+    position: relative;
+    display: inline-block;
+    float: right;
+    right: 15px;
+  }
 `
 
-const Image = styled.img`
+const LanguageBox = styled.div`
   display: inline-block;
-  height: 32px;
-  margin-bottom: -10px;
+  border: 1.25px solid ${darken(0.2, PRIMARY_COLOR)};
+  border-radius: 3px;
+  background-color: ${transparentize(0.8, PRIMARY_COLOR)};
+
+  padding: 5px;
+  margin-left: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
-const Select = styled.select`
-  cursor: pointer;
-  margin-right: 10px;
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid #ffffff;
-  min-width: 90px;
+const LanguageOption = styled(LanguageBox)`
+  display: ${props => (props.isOpen ? 'inline-block' : 'none')};
+  &:hover {
+    border-color: ${PRIMARY_COLOR};
+  }
 `
 
-const LanguagePicker = ({ locales, currentLocale, onChange }) => {
+const Text = styled.p`
+  font-size: 12px;
+  font-weight: ${props => props.bold};
+  margin: 0;
+`
+
+const LanguagePicker = ({
+  isOpen,
+  locales,
+  currentLocale,
+  onSelection,
+  onToggleOpen,
+}) => {
   return (
-    <Container>
-      <Select
-        onChange={onChange}
-        value={currentLocale}
-        aria-label="language selection"
-      >
-        {locales.map(locale => (
-          <option value={locale.value} key={locale.value}>
-            {locale.displayName}
-          </option>
+    <Container
+      onMouseEnter={() => onToggleOpen(true)}
+      onMouseLeave={() => onToggleOpen(false)}
+    >
+      {locales
+        .filter(locale => locale.value !== currentLocale)
+        .map(locale => (
+          <LanguageOption
+            isOpen={isOpen}
+            key={locale.value}
+            onClick={() => onSelection(locale.value)}
+          >
+            <Text> {locale.value} </Text>
+          </LanguageOption>
         ))}
-      </Select>
-      <Image src={language} alt="language selection image" />
+      <LanguageBox onClick={() => onToggleOpen(!isOpen)}>
+        <Text>
+          Language: <b>{currentLocale}</b>
+        </Text>
+      </LanguageBox>
     </Container>
   )
 }
+
 class StatefulLanguagePicker extends React.Component {
   // I wish hooks would work :(
   constructor(props) {
     super(props)
-    this.state = { selection: '' }
-    this.onChange = this.onChange.bind(this)
+    this.state = { selection: '', isOpen: false }
+    this.onSelection = this.onSelection.bind(this)
+    this.onToggleOpen = this.onToggleOpen.bind(this)
   }
 
   componentDidMount() {
     this.setState({ selection: window.location.pathname.replace(/\//g, '') })
   }
 
-  onChange(event) {
-    this.setState({ selection: event.target.value }, () =>
-      navigate(this.state.selection)
-    )
+  onSelection(locale) {
+    this.setState({ selection: locale }, () => navigate(this.state.selection))
+  }
+
+  onToggleOpen(value) {
+    this.setState({ isOpen: value })
   }
 
   render() {
     return (
       <LanguagePicker
+        isOpen={this.state.isOpen}
         locales={this.props.locales}
         currentLocale={this.state.selection}
-        onChange={this.onChange}
+        onSelection={this.onSelection}
+        onToggleOpen={this.onToggleOpen}
       />
     )
   }

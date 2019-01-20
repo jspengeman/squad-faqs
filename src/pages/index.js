@@ -21,7 +21,6 @@ const IndexPage = ({ data }) => {
   const { faqs, metadata } = graphAdapater(data)
   return (
     <div>
-      <LanguagePicker locales={metadata.locales} />
       <Layout>
         <SEO title={metadata.title} keywords={[`squad`, `squad-faqs`]} />
         <Header subtitle={metadata.subtitle} />
@@ -34,6 +33,7 @@ const IndexPage = ({ data }) => {
           chatUrl={metadata.chatUrl}
         />
       </Layout>
+      <LanguagePicker locales={metadata.locales} />
     </div>
   )
 }

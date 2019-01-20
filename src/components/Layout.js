@@ -12,8 +12,8 @@ export const Container = styled.section`
   margin-left: auto;
   padding-top: 15px;
   padding-bottom: 15px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
 
   @media (min-width: 768px) {
     width: 720px;
