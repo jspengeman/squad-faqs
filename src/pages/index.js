@@ -8,17 +8,29 @@ import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import { Either, value, identity } from '../utils/functions'
 
-const graphAdapater = data => ({
-  faqs: Either.fromPath(['allContentfulCategory', 'edges', 0, 'node', 'faqs'])(
-    data
-  ).fold(value([]), identity),
-  metadata: Either.fromPath(['allContentfulSiteMetadata', 'edges', 0, 'node'])(
-    data
-  ).fold(value([]), identity),
+const graphQLAdapater = props => ({
+  faqs: Either.fromPath([
+    'data',
+    'allContentfulCategory',
+    'edges',
+    0,
+    'node',
+    'faqs',
+  ])(props).fold(value([]), identity),
+  metadata: Either.fromPath([
+    'data',
+    'allContentfulSiteMetadata',
+    'edges',
+    0,
+    'node',
+  ])(props).fold(value([]), identity),
+  locale: Either.fromPath(['pageContext', 'locale'])(props)
+    .map(locale => locale.replace(/\//g, ''))
+    .fold(value('en-US'), identity),
 })
 
-const IndexPage = ({ data }) => {
-  const { faqs, metadata } = graphAdapater(data)
+const IndexPage = props => {
+  const { faqs, metadata, locale } = graphQLAdapater(props)
   return (
     <div>
       <Layout>
@@ -33,7 +45,7 @@ const IndexPage = ({ data }) => {
           chatUrl={metadata.chatUrl}
         />
       </Layout>
-      <LanguagePicker locales={metadata.locales} />
+      <LanguagePicker locales={metadata.locales} currentLocale={locale} />
     </div>
   )
 }

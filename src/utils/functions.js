@@ -25,7 +25,7 @@ const Either = {
 
 const identity = x => x
 
-const value = x => x => x
+const value = x => () => x
 
 module.exports = {
   Either,
