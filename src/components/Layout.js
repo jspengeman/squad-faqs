@@ -1,9 +1,23 @@
 import React from 'react'
+import { darken } from 'polished'
 import styled, { createGlobalStyle } from 'styled-components'
+import { PRIMARY_COLOR } from '../utils/theme'
 
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: black;
+  }
+
+  a {
+    color: ${PRIMARY_COLOR};
+  }
+
+  a:visited {
+    color: ${darken(0.2, PRIMARY_COLOR)};
+  }
+
+  a:hover {
+    color: ${darken(0.1, PRIMARY_COLOR)};
   }
 `
 

@@ -10,11 +10,6 @@ const slugify = text =>
     .split(/ +/)
     .join('-')
 
-const Section = styled.section`
-  text-align: justify;
-  text-justify: inter-word;
-`
-
 const Anchor = styled.a`
   color: ${PRIMARY_COLOR};
   text-decoration: none;
@@ -38,10 +33,10 @@ const Answer = ({ answer }) => (
 )
 
 const FAQ = ({ faq: { question, answer } }) => (
-  <Section>
+  <div>
     <Question question={question} />
     <Answer answer={answer} />
-  </Section>
+  </div>
 )
 
 export default FAQ
