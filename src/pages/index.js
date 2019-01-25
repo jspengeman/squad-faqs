@@ -36,7 +36,10 @@ const IndexPage = ({ faqs, metadata, locale }) => {
           chatUrl={metadata.chatUrl}
         />
       </Layout>
-      <LanguagePicker locales={metadata.locales} currentLocale={locale} />
+      <LanguagePicker
+        locales={metadata.locales}
+        currentLocale={locale.replace(/\//g, '')}
+      />
     </div>
   )
 }
