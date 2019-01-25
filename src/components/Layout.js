@@ -12,10 +12,6 @@ const GlobalStyle = createGlobalStyle`
     color: ${PRIMARY_COLOR};
   }
 
-  a:visited {
-    color: ${darken(0.2, PRIMARY_COLOR)};
-  }
-
   a:hover {
     color: ${darken(0.1, PRIMARY_COLOR)};
   }
