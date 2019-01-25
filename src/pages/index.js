@@ -8,29 +8,20 @@ import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import { Either, value, identity } from '../utils/functions'
 
-const graphQLAdapater = props => ({
-  faqs: Either.fromPath([
-    'data',
-    'allContentfulCategory',
-    'edges',
-    0,
-    'node',
-    'faqs',
-  ])(props).fold(value([]), identity),
-  metadata: Either.fromPath([
-    'data',
-    'allContentfulSiteMetadata',
-    'edges',
-    0,
-    'node',
-  ])(props).fold(value([]), identity),
-  locale: Either.fromPath(['pageContext', 'locale'])(props)
-    .map(locale => locale.replace(/\//g, ''))
-    .fold(value('en-US'), identity),
-})
+const adapter = fields => input =>
+  Object.keys(fields).reduce(
+    (output, key) =>
+      Object.assign(output, {
+        [key]: Either.fromPath(fields[key].path)(input).fold(
+          value(fields[key].undef),
+          identity
+        ),
+      }),
+    {}
+  )
 
-const IndexPage = props => {
-  const { faqs, metadata, locale } = graphQLAdapater(props)
+const IndexPage = ({ faqs, metadata, locale }) => {
+  console.log({ faqs, metadata, locale })
   return (
     <div>
       <Layout>
@@ -92,4 +83,19 @@ export const query = graphql`
   }
 `
 
-export default IndexPage
+const GraphAdapter = ({ adapter, render }) => props => render(adapter(props))
+
+export default GraphAdapter({
+  adapter: adapter({
+    faqs: {
+      path: ['data', 'allContentfulCategory', 'edges', 0, 'node', 'faqs'],
+      undef: [],
+    },
+    metadata: {
+      path: ['data', 'allContentfulSiteMetadata', 'edges', 0, 'node'],
+      undef: {},
+    },
+    locale: { path: ['pageContext', 'locale'], undef: 'en-US' },
+  }),
+  render: props => <IndexPage {...props} />,
+})
