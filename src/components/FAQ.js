@@ -4,6 +4,7 @@ import { PRIMARY_COLOR } from '../utils/theme'
 
 const slugify = text =>
   text
+    .trim()
     .replace(/[^\w\s]|_/g, '')
     .toLowerCase()
     .split(/ +/)
@@ -16,7 +17,6 @@ const Anchor = styled.a`
 
 const Question = ({ question }) => {
   const slug = slugify(question.question)
-  console.log(slug)
   return (
     <h2 id={slug}>
       <Anchor href={`#${slug}`}>{question.question}</Anchor>
